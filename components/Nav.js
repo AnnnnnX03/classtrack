@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useAuth } from '../lib/AuthContext'
 
@@ -29,8 +30,13 @@ export default function Nav() {
       <header className="header">
         <div className="header-inner">
           <div className="logo">
-            <span className="logo-mark">CT</span>
-            <span className="logo-text">ClassTrack</span>
+            <div className="logo-img-wrap">
+              <Image src="/logo.png" alt="AiCAMP logo" width={36} height={36} style={{ objectFit: 'contain' }} />
+            </div>
+            <div className="logo-text-wrap">
+              <span className="logo-name">AiCAMP</span>
+              <span className="logo-sub">Class Track</span>
+            </div>
           </div>
           {user && (
             <div className="user-area">
@@ -46,7 +52,7 @@ export default function Nav() {
           {tabs.map(t => {
             const active = router.pathname === t.href
             return (
-              <Link key={t.href} href={t.href} className={`tab ${active ? 'active' : ''}`}>
+              <Link key={t.href} href={t.href} className={active ? 'tab active' : 'tab'}>
                 <span className="tab-icon">{t.icon}</span>
                 <span className="tab-label">{t.label}</span>
               </Link>
@@ -58,34 +64,43 @@ export default function Nav() {
       <style jsx>{`
         .header {
           position: sticky; top: 0; z-index: 50;
-          background: rgba(15,17,23,0.9);
+          background: rgba(15,17,23,0.95);
           backdrop-filter: blur(12px);
           border-bottom: 1px solid var(--border);
         }
         .header-inner {
           max-width: 900px;
           margin: 0 auto;
-          padding: 12px 16px;
+          padding: 10px 16px;
           display: flex; align-items: center; justify-content: space-between;
         }
         .logo { display: flex; align-items: center; gap: 10px; }
-        .logo-mark {
-          background: var(--accent);
-          color: #0a1a14;
-          font-family: var(--font-head);
-          font-weight: 800; font-size: 13px;
-          padding: 4px 8px; border-radius: 6px;
+        .logo-img-wrap {
+          width: 40px; height: 40px;
+          background: #000;
+          border-radius: 10px;
+          display: flex; align-items: center; justify-content: center;
+          overflow: hidden;
+          flex-shrink: 0;
         }
-        .logo-text {
+        .logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-name {
           font-family: var(--font-head);
-          font-weight: 700; font-size: 18px;
-          letter-spacing: -0.02em;
+          font-weight: 800;
+          font-size: 16px;
+          letter-spacing: -0.01em;
+          color: #29b6e8;
+        }
+        .logo-sub {
+          font-family: var(--font-body);
+          font-size: 11px;
+          font-weight: 500;
+          color: var(--text-muted);
+          letter-spacing: 0.03em;
+          text-transform: uppercase;
         }
         .user-area { display: flex; align-items: center; gap: 10px; }
-        .role-pill {
-          font-size: 12px; font-weight: 700;
-          letter-spacing: 0.02em;
-        }
+        .role-pill { font-size: 12px; font-weight: 700; letter-spacing: 0.02em; }
         .signout-btn {
           background: var(--surface2);
           border: 1px solid var(--border);
@@ -97,7 +112,7 @@ export default function Nav() {
           font-family: var(--font-body);
           transition: all 0.15s;
         }
-        .signout-btn:hover { color: var(--text); border-color: var(--accent); }
+        .signout-btn:hover { color: var(--text); border-color: #29b6e8; }
         .bottom-nav {
           position: fixed; bottom: 0; left: 0; right: 0;
           display: flex;
@@ -113,13 +128,12 @@ export default function Nav() {
           padding: 10px 4px 8px;
           color: var(--text-muted);
           transition: color 0.15s;
-          font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
           text-transform: uppercase;
         }
         .tab:hover { color: var(--text); }
-        .tab.active { color: var(--accent); }
+        .tab.active { color: #29b6e8; }
         .tab-icon { font-size: 20px; }
-        .tab-label { font-size: 10px; }
+        .tab-label { font-size: 10px; font-weight: 600; letter-spacing: 0.04em; }
       `}</style>
     </>
   )
