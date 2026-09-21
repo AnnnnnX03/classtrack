@@ -31,15 +31,15 @@ Class programs that sell credits in bulk (e.g. "10 classes for $200") need to tr
 
 ##  What it does
 
-- ** One-tap check-in** — teachers mark attendance from a phone; one credit is deducted and logged automatically
-- ** Credit management** — add credits when a parent pays, with the payment date recorded
-- ** Dashboard** — live overview of total students, who's running low on credits, and recent check-in activity
-- ** History** — full attendance and payment log per student
-- ** Role-based access** — Supabase Auth + Postgres Row Level Security enforce three roles:
+- **One-tap check-in** — teachers mark attendance from a phone; one credit is deducted and logged automatically
+- **Credit management** — add credits when a parent pays, with the payment date recorded
+- **Dashboard** — live overview of total students, who's running low on credits, and recent check-in activity
+- **History** — full attendance and payment log per student
+- **Role-based access** — Supabase Auth + Postgres Row Level Security enforce three roles:
   - **Admin** — full access, manages students and credits
   - **Teacher** — can check students in and view all records
   - **Parent** — can only view their own linked child's attendance and payment history
-- ** Installable** as a home-screen web app for quick access on a teacher's phone
+- **Installable** as a home-screen web app for quick access on a teacher's phone
 
 ---
 
