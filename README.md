@@ -1,6 +1,6 @@
 # 📋 ClassTrack
 
-A mobile-friendly web app for tracking student class attendance and prepaid credits — built to replace a manual spreadsheet workflow at a tutoring program, with role-based access for teachers, admins, and parents.
+A mobile-friendly web app for tracking student class attendance and prepaid credits, built to replace a manual spreadsheet workflow at a tutoring program, with role-based access for teachers, admins, and parents.
 
 ![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
