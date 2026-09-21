@@ -10,7 +10,7 @@ A mobile-friendly web app for tracking student class attendance and prepaid cred
 
 ---
 
-## 🧱 Tech stack
+##  Tech stack
 
 | Layer | Technology |
 |---|---|
@@ -21,26 +21,29 @@ A mobile-friendly web app for tracking student class attendance and prepaid cred
 | Deployment | Vercel |
 
 ---
+## 📝 Background
 
-## 🎯 The problem
+Originally built to solve a real attendance-and-billing workflow at a Python/AI tutoring program I worked at, then generalized here as a standalone project (no real student data or organization branding included).
+
+##  The problem
 
 Class programs that sell credits in bulk (e.g. "10 classes for $200") need to track, per student: how many credits are left, when they attended, and when to alert a parent before credits run out. Doing this in a shared spreadsheet doesn't scale — no access control, no audit trail, and no easy way for a teacher to check a student in from their phone mid-class.
 
-## ✨ What it does
+##  What it does
 
-- **📱 One-tap check-in** — teachers mark attendance from a phone; one credit is deducted and logged automatically
-- **💳 Credit management** — add credits when a parent pays, with the payment date recorded
-- **📊 Dashboard** — live overview of total students, who's running low on credits, and recent check-in activity
-- **🕓 History** — full attendance and payment log per student
-- **🔐 Role-based access** — Supabase Auth + Postgres Row Level Security enforce three roles:
+- ** One-tap check-in** — teachers mark attendance from a phone; one credit is deducted and logged automatically
+- ** Credit management** — add credits when a parent pays, with the payment date recorded
+- ** Dashboard** — live overview of total students, who's running low on credits, and recent check-in activity
+- ** History** — full attendance and payment log per student
+- ** Role-based access** — Supabase Auth + Postgres Row Level Security enforce three roles:
   - **Admin** — full access, manages students and credits
   - **Teacher** — can check students in and view all records
   - **Parent** — can only view their own linked child's attendance and payment history
-- **📲 Installable** as a home-screen web app for quick access on a teacher's phone
+- ** Installable** as a home-screen web app for quick access on a teacher's phone
 
 ---
 
-## 🏗️ Architecture notes
+##  Architecture notes
 
 - All data access goes through Supabase's client SDK — no student data is ever hardcoded in the app; everything is fetched live from Postgres
 - Authorization is enforced at the **database level** via RLS policies (`supabase-schema.sql`), not just hidden in the UI — a parent's Supabase session literally cannot query another student's records, regardless of what the frontend shows
@@ -48,14 +51,14 @@ Class programs that sell credits in bulk (e.g. "10 classes for $200") need to tr
 
 ```
 ┌─────────────┐      ┌──────────────────┐      ┌────────────────────┐
-│   Browser    │ ───▶ │  Next.js Pages    │ ───▶ │  Supabase (Postgres) │
-│ (teacher /   │      │  check-in /       │      │  + Auth + RLS        │
-│  admin app)  │ ◀─── │  students /       │ ◀─── │  policies enforce    │
-└─────────────┘      │  dashboard        │      │  per-role access      │
-                       └──────────────────┘      └────────────────────┘
+│   Browser   │ ───▶ │  Next.js Pages   │ ───▶ │ Supabase (Postgres)│
+│ (teacher /  │      │  check-in /      │      │  + Auth + RLS      │
+│  admin app) │ ◀─── │  students /      │ ◀─── │  policies enforce  │
+└─────────────┘      │  dashboard       │      │  per-role access   │
+                     └──────────────────┘      └────────────────────┘
 ```
 
-## 📁 Project structure
+##  Project structure
 
 ```
 pages/
@@ -72,7 +75,7 @@ components/
 supabase-schema.sql   # Database schema + RLS policies
 ```
 
-## 🚀 Running locally
+##  Running locally
 
 ```bash
 npm install
@@ -85,6 +88,4 @@ Then run `supabase-schema.sql` in your Supabase project's SQL editor to set up t
 
 ---
 
-## 📝 Background
 
-Originally built to solve a real attendance-and-billing workflow at a Python/AI tutoring program I worked at, then generalized here as a standalone project (no real student data or organization branding included).
