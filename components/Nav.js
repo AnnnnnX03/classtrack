@@ -31,10 +31,10 @@ export default function Nav() {
         <div className="header-inner">
           <div className="logo">
             <div className="logo-img-wrap">
-              <Image src="/logo.png" alt="AiCAMP logo" width={36} height={36} style={{ objectFit: 'contain' }} />
+              <Image src="/logo.png" alt="logo" width={36} height={36} style={{ objectFit: 'contain' }} />
             </div>
             <div className="logo-text-wrap">
-              <span className="logo-name">AiCAMP</span>
+              <span className="logo-name">classtrack</span>
               <span className="logo-sub">Class Track</span>
             </div>
           </div>
