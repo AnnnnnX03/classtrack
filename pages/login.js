@@ -52,9 +52,9 @@ export default function Login() {
         {/* Logo */}
         <div className="brand">
           <div className="logo-wrap">
-            <Image src="/logo.png" alt="AiCAMP" width={72} height={72} style={{ objectFit: 'contain' }} />
+            <Image src="/logo.png" alt="CLASSTRACK-AC" width={72} height={72} style={{ objectFit: 'contain' }} />
           </div>
-          <h1 className="brand-name">AiCAMP</h1>
+          <h1 className="brand-name">CLASSTRACK-AC</h1>
           <p className="brand-sub">Class Track</p>
           <p className="brand-tagline">Student credit management system</p>
         </div>
